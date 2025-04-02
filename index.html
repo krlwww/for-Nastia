@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ich Liebe Dich</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(-45deg, #b8e5d3, #a0d8b3, #8ac99d, #f0e68c, #b8e5d3);
+            background-size: 500% 500%;
+            animation: gradientBG 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #ffb6c1, #ff69b4, #ffb6c1);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: colorFlow 5s linear infinite, textZoom 3s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes colorFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textZoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(230, 138, 138, 0.2);
+            opacity: 0;
+            animation: fadeInOut 15s linear infinite;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">Ich Liebe <a href="https://i.pinimg.com/736x/e9/56/67/e95667b8e81ef6d132ba1a6eeb1f1fa1.jpg" target="_blank">Dich</a></h1>
+
+    <script>
+        const phrases = [
+            "Я люблю тебя за твои прекрасные глаза, глядя в них, хочется уйти в забвение, и остаться там навсегда.",
+            "Я люблю тебя за твою жизнерадостную улыбку, она заразительна, и глядя на тебя, хочется тоже улыбнуться.",
+            "Я люблю тебя за твой нежный голос, который постоянно звучит в моей голове, отголосками прошлого, и настоящего.",
+            "Я люблю тебя за твой запах, который меня дурманит, и не отпускает от тебя.",
+            "Я люблю тебя за твои нежные ручки, ласковые и мягкие, я так обожаю ложиться в них своей щекой.",
+            "Я люблю тебя за твои стройные ножки, я никогда и нигде не видел более красивых ног.",
+            "Я люблю тебя за твоё прекрасное тело, кто бы что ни говорил, но для меня ты просто богиня, к ногам которой хочется упасть.",
+            "Я люблю тебя за твою сексуальную попочку, которую невозможно не потрогать, не погладить проходя мимо.",
+            "Я люблю тебя за твои милые Кусь, когда это неожиданно и спонтанно, это очень забавляет, и придает необычности нашим отношениям.",
+            "Я люблю тебя за твой задорный и заразительный смех, он как пение птиц в лесу, можно слушать вечно.",
+            "Я люблю тебя за твою искренность, более искренних слов, я никогда ни от кого не слышал.",
+            "Я люблю тебя за твою заботу",
+            "Я люблю тебя за твою теплоту, я не знаю как это сказать, но я словно всем телом и душой ощущаю от тебя теплые чувства, которые греют мое сердце."
+        ];
+
+        function showFloatingText() {
+            const text = document.createElement("div");
+            text.classList.add("floating-text");
+            text.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+            
+            text.style.left = `${Math.random() * 80 + 10}%`;
+            text.style.top = `${Math.random() * 80 + 10}%`;
+            document.body.appendChild(text);
+            
+            setTimeout(() => {
+                text.remove();
+            }, 15000);
+        }
+
+        setInterval(showFloatingText, 20000);
+    </script>
+</body>
+</html>
